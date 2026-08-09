@@ -59,10 +59,7 @@ async def start(
             )
         ],
         [
-          InlineKeyboardButton(
-                "🎁 优惠活动/PROMOTION",
-                callback_data="promotion"
-          )
+        
             InlineKeyboardButton(
                 "📞 联系客服/CUSTOMER SERVICE",
                 url="https://wa.me/601175766643"
