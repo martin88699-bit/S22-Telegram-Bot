@@ -75,6 +75,12 @@ async def start(
         ],
         [
             InlineKeyboardButton(
+                "🎁 无限充值RM50送RM5/UNLIMITED TOPUP RM50FREE 5",
+                callback_data="topup_bonus"
+            )  
+        ],  
+        [              
+            InlineKeyboardButton(
                 "📞 线上客服/ONLINE CUSTOMER SERVICE ",
                 url="https://wa.me/601175766643"
             )
@@ -178,6 +184,79 @@ async def promotion(
         reply_markup=InlineKeyboardMarkup(kb)
     )
 
+# =========================
+# 无限充值 RM50 送 RM5
+# =========================
+
+async def topup_bonus(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    query = update.callback_query
+
+    await query.answer()
+
+    text = (
+        "🎁 无限充值 RM50 送 RM5\n\n"
+
+        "💰 每次充值：RM50\n"
+        "🎁 赠送奖金：RM5\n"
+        "🔄 流水要求：x1\n\n"
+
+        "📋 活动方式\n"
+        "1️⃣ 每次充值 RM50\n"
+        "2️⃣ 每次可获得 RM5 奖金\n"
+        "3️⃣ 奖金流水要求为 x1\n"
+        "4️⃣ 符合活动条件即可重复参与\n\n"
+
+        "🧧 无限充值，RM50送RM5\n\n"
+
+        "📞 如需帮助，请联系客服。"
+
+       "🎁 UNLIMITED DEPOSIT TANPA HAD RM50 DAPAT RM5 \n\n"
+
+        "💰 Setiap deposit: RM50\n"
+        "🎁 Bonus diberikan: RM5\n"
+        "🔄 Turnover：x1\n\n"
+
+        "📋Cara Menyertai\n"
+        "1️⃣ Setiap deposit RM50\n"
+        "2️⃣ Setiap deposit akan menerima bonus RM5\n"
+        "3️⃣ Turnover x1\n"
+        "4️⃣ Boleh menyertai promosi ini berulang kali mengikut terma dan syarat
+
+
+        "🧧UNLIMITED DEPOSIT TANPA HAD, RM50 DAPAT RM5\n\n"
+
+        "📞Jika anda memerlukan bantuan, sila hubungi khidmat pelanggan kami."   
+    )
+
+    kb = [
+        [
+            InlineKeyboardButton(
+                "📝 注册账号",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "📞 联系客服",
+                url="https://wa.me/601175766643"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 返回主菜单",
+                callback_data="main_menu"
+            )
+        ]
+    ]
+
+    await query.message.reply_text(
+        text,
+        reply_markup=InlineKeyboardMarkup(kb)
+    )
 
 # =========================
 # 返回主菜单
@@ -249,6 +328,13 @@ app.add_handler(
     CallbackQueryHandler(
         promotion,
         pattern="^promotion$"
+    )
+)
+# 🎁 优惠活动按钮
+app.add_handler(
+    CallbackQueryHandler(
+        topup_bonus,
+        pattern="^topup_bonus$"
     )
 )
 
