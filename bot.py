@@ -64,7 +64,7 @@ async def start(
         [
             InlineKeyboardButton(
                 "📝 注册账号/REGISTER",
-                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+                url="https://wa.me/601175766643"
             )
         ],
         [
@@ -82,7 +82,7 @@ async def start(
         [              
             InlineKeyboardButton(
                 "📞 线上客服/ONLINE CUSTOMER SERVICE ",
-                url="https://wa.me/601175766643"
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ]
     ]
@@ -161,19 +161,19 @@ async def promotion(
     kb = [
         [
             InlineKeyboardButton(
-                "📝 注册账号",
-                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "📞 联系客服",
+                "📝 注册账号/REGISTER",
                 url="https://wa.me/601175766643"
             )
         ],
         [
             InlineKeyboardButton(
-                "🔙 返回主菜单",
+                "📞 联系客服/ONLINE CUSTOMER SERVICE",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 返回主菜单/BACK MENU",
                 callback_data="main_menu"
             )
         ]
@@ -214,6 +214,7 @@ async def topup_bonus(
 
         "📞 如需帮助，请联系客服。"
 
+        
        "🎁 UNLIMITED DEPOSIT TANPA HAD RM50 DAPAT RM5 \n\n"
 
         "💰 Setiap deposit: RM50\n"
@@ -235,19 +236,19 @@ async def topup_bonus(
     kb = [
         [
             InlineKeyboardButton(
-                "📝 注册账号",
-                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
-            )
-        ],
-        [
-            InlineKeyboardButton(
-                "📞 联系客服",
+                "📝 注册账号/REGISTER",
                 url="https://wa.me/601175766643"
             )
         ],
         [
             InlineKeyboardButton(
-                "🔙 返回主菜单",
+                "📞 联系客服/ONLINE CUSTOMER SERVICE",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🔙 返回主菜单/BACK MENU",
                 callback_data="main_menu"
             )
         ]
@@ -274,32 +275,32 @@ async def main_menu(
     kb = [
         [
             InlineKeyboardButton(
-                "🎮 开始游戏",
+                "🎮 开始游戏/START GAMES",
                 url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "📝 注册账号",
+                "📝 注册账号/REGISTER",
                 url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ],
         [
             InlineKeyboardButton(
-                "🎁 优惠活动",
+                "🎁 优惠活动/PROMOTION",
                 callback_data="promotion"
             )
         ],
         [
             InlineKeyboardButton(
-       "🎁 无限充值RM50送RM5",
+       "🎁 无限充值RM50送RM5/UNLIMITED RM50 FREE 5",
         callback_data="topup_bonus"
             )
         ],   
         [       
             InlineKeyboardButton(
-                "📞 联系客服",
-                url="https://wa.me/601175766643"
+                "📞 联系客服/ONLINE CUSTOMER SERVICE",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ]
     ]
