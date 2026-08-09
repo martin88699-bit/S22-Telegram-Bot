@@ -22,26 +22,26 @@ def get_main_menu():
     kb = [
         [
             InlineKeyboardButton(
-                "🎮 开始",
-                callback_data="start_game"
+                "🎮 开始/START",
+                url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "📝 注册",
-                callback_data="register"
+                "📝 注册/REGISTER",
+                url="https://wa.me/601175766643"
             )
         ],
         [
             InlineKeyboardButton(
-                "🎁 活动",
+                "🎁 活动/PROMOTION",
                 callback_data="promotion"
             )
         ],
         [
             InlineKeyboardButton(
-                "📞 客服",
-                callback_data="customer_service"
+                "📞 客服/CUSTOMER SERVICE",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ]
     ]
@@ -56,14 +56,14 @@ def get_main_menu():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
-        "🤖 欢迎来到测试机器人\n\n"
+        "🎰 欢迎来到 S22 ENTERTAINMENT CITY\n\n"
         "请选择您需要的服务：",
-        reply_markup=get_main_menu()
+        reply_markup=InlineKeyboardMarkup(kb)
     )
 
 
 # =========================
-# 🎮 开始
+# 优惠活动
 # =========================
 
 async def start_game(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -120,8 +120,8 @@ async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
     kb = [
         [
             InlineKeyboardButton(
-                "🎁 查看活动详情",
-                callback_data="promotion_detail"
+                "🎁 500％首充奖励/500％ welcome bonus",
+                callback_data="500％bonus"
             )
         ],
         [
@@ -135,13 +135,9 @@ async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await query.edit_message_text(
         "🎁 活动详情\n\n"
         "✨ 欢迎参加本次活动！\n\n"
-        "💰 活动条件：RM100\n"
-        "🎁 活动奖励：最高 500%\n"
-        "📌 活动说明：\n"
-        "1️⃣ 注册账号\n"
-        "2️⃣ 登录账户\n"
-        "3️⃣ 完成指定条件\n"
-        "4️⃣ 根据活动规则领取奖励\n\n"
+        "💰 最低存款：RM100\n"
+        "🎁 流水要求：x18\n"
+        "📌 活动说明：适用于全部老虎机游戏除了918KISS MEGA888 PUSSY"
         "祝您使用愉快 🍀",
         reply_markup=InlineKeyboardMarkup(kb)
     )
@@ -176,7 +172,11 @@ async def promotion_detail(
 
     await query.edit_message_text(
         "🎁 活动详情\n\n"
-        "按钮跳转测试成功！",
+        "✨ 欢迎参加本次活动！\n\n"
+        "💰 最低存款：RM100\n"
+        "🎁 流水要求：x18\n"
+        "📌 活动说明：适用于全部老虎机游戏除了918KISS MEGA888 PUSSY"
+        "祝您使用愉快 🍀",
         reply_markup=InlineKeyboardMarkup(kb)
     )
 
@@ -196,8 +196,7 @@ async def customer_service(
     await query.edit_message_text(
         "📞 客服\n\n"
         "这是客服按钮测试页面。",
-        reply_markup=InlineKeyboardMarkup([
-            [
+        url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
                 InlineKeyboardButton(
                     "🔙 返回主菜单",
                     callback_data="back_menu"
