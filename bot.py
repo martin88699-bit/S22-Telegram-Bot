@@ -328,9 +328,6 @@ app.add_handler(
     CallbackQueryHandler(
         promotion,
         pattern="^promotion$"
-    )
-)
-# 🎁 优惠活动按钮
 app.add_handler(
     CallbackQueryHandler(
         topup_bonus,
