@@ -133,8 +133,16 @@ async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
 
     await query.edit_message_text(
-        "🎁 活动\n\n"
-        "这里是活动测试页面。",
+        "🎁 活动详情\n\n"
+        "✨ 欢迎参加本次活动！\n\n"
+        "💰 活动条件：RM100\n"
+        "🎁 活动奖励：最高 500%\n"
+        "📌 活动说明：\n"
+        "1️⃣ 注册账号\n"
+        "2️⃣ 登录账户\n"
+        "3️⃣ 完成指定条件\n"
+        "4️⃣ 根据活动规则领取奖励\n\n"
+        "祝您使用愉快 🍀",
         reply_markup=InlineKeyboardMarkup(kb)
     )
 
