@@ -123,8 +123,33 @@ async def promotion(
         "3️⃣ 第三次充值100％ x22流水\n"
         "4️⃣ 第四次充值100％ x22流水\n"
         "5️⃣ 第五次充值100％ x22流水\n\n"
-        
+
+        "🧧总数500％奖金        
         "📞 如需帮助，请联系客服。"
+        
+        "🎁 PROMOSI S22 ENTERTAINMENT CITY\n\n"
+
+        "🔥 500% WELCOME BONUS\n\n"
+
+        "💰 Deposit Minimum: RM100\n"
+        "🎰 Permainan: Slot Sahaja\n"
+        "🔄 Turnover：x22\n\n"
+
+        "📋 Cara Menyertai\n"
+        "1️⃣ Daftar akaun S22 yang baharu\n"
+        "2️⃣ Log masuk ke akaun anda\n"
+        "3️⃣ Buat deposit pertama dengan minimum RM100\n"
+        "4️⃣ Selepas deposit berjaya, anda boleh menikmati promosi mengikut terma dan syarat promosi.\n\n"
+
+        
+        "1️⃣ Deposit Pertama — Bonus 100% × Turnover x22\n"
+        "2️⃣ Deposit Kedua — Bonus 100% × Turnover x22\n"
+        "3️⃣ Deposit Ketiga — Bonus 100% × Turnover x22\n"
+        "4️⃣ Deposit KeEmpat — Bonus 100% × Turnover x22\n"
+        "5️⃣ Deposit KeLima — Bonus 100% × Turnover x22 \n\n"
+
+        "🧧TOTAL BONUS 500％
+        "📞 Jika anda memerlukan bantuan, sila hubungi khidmat pelanggan kami."
     )
 
     kb = [
