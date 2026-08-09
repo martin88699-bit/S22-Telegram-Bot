@@ -224,7 +224,7 @@ async def topup_bonus(
         "1️⃣ Setiap deposit RM50\n"
         "2️⃣ Setiap deposit akan menerima bonus RM5\n"
         "3️⃣ Turnover x1\n"
-        "4️⃣ Boleh menyertai promosi ini berulang kali mengikut terma dan syarat
+        "4️⃣ Boleh menyertai promosi ini berulang kali mengikut terma dan syarat\n\n"
 
 
         "🧧UNLIMITED DEPOSIT TANPA HAD, RM50 DAPAT RM5\n\n"
@@ -292,6 +292,12 @@ async def main_menu(
         ],
         [
             InlineKeyboardButton(
+       "🎁 无限充值RM50送RM5",
+        callback_data="topup_bonus"
+            )
+        ],   
+        [       
+            InlineKeyboardButton(
                 "📞 联系客服",
                 url="https://wa.me/601175766643"
             )
@@ -328,6 +334,9 @@ app.add_handler(
     CallbackQueryHandler(
         promotion,
         pattern="^promotion$"
+    )
+)
+
 
 # 🎁 优惠活动按钮      
 app.add_handler(
