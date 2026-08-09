@@ -57,25 +57,25 @@ async def start(
     kb = [
         [
             InlineKeyboardButton(
-                "🎮 开始游戏",
+                "🎮 开始游戏/START GAME",
                 url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "📝 注册账号",
+                "📝 注册账号/REGISTER",
                 url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ],
         [
             InlineKeyboardButton(
-                "🎁 优惠活动",
+                "🎁 优惠活动/PROMOTION",
                 callback_data="promotion"
             )
         ],
         [
             InlineKeyboardButton(
-                "📞 联系客服",
+                "📞 线上客服/ONLINE CUSTOMER SERVICE ",
                 url="https://wa.me/601175766643"
             )
         ]
@@ -117,6 +117,13 @@ async def promotion(
         "3️⃣ 完成首次存款，最低 RM100\n"
         "4️⃣ 存款成功后按照活动规则获得优惠\n\n"
 
+        
+        "1️⃣ 第一次充值100％ x22流水\n"
+        "2️⃣ 第二次充值100％ x22流水\n"
+        "3️⃣ 第三次充值100％ x22流水\n"
+        "4️⃣ 第四次充值100％ x22流水\n"
+        "5️⃣ 第五次充值100％ x22流水\n\n"
+        
         "📞 如需帮助，请联系客服。"
     )
 
