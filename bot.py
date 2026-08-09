@@ -1,59 +1,54 @@
 import os
 import asyncio
+import threading
 
+from flask import Flask
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
     Application,
     CommandHandler,
+    MessageHandler,
     CallbackQueryHandler,
     ContextTypes,
+    filters
 )
 
 
-TOKEN = os.environ["BOT_TOKEN"]
-
-
 # =========================
-# 主菜单
+# 开始菜单
 # =========================
 
-def get_main_menu():
+async def start(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
 
     kb = [
         [
             InlineKeyboardButton(
-                "🎮 开始/START",
+                "🎮 开始游戏",
                 url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "📝 注册/REGISTER",
-                url="https://wa.me/601175766643"
+                "📝 注册账号",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ],
         [
             InlineKeyboardButton(
-                "🎁 活动/PROMOTION",
+                "🎁 优惠活动",
                 callback_data="promotion"
             )
         ],
         [
             InlineKeyboardButton(
-                "📞 客服/CUSTOMER SERVICE",
-                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+                "📞 联系客服",
+                url="https://wa.me/601175766643"
             )
         ]
     ]
-
-    return InlineKeyboardMarkup(kb)
-
-
-# =========================
-# /start
-# =========================
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     await update.message.reply_text(
         "🎰 欢迎来到 S22 ENTERTAINMENT CITY\n\n"
@@ -66,53 +61,10 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # 优惠活动
 # =========================
 
-async def start_game(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    query = update.callback_query
-    await query.answer()
-
-    await query.edit_message_text(
-        "🎮 开始\n\n"
-        "按钮测试成功！",
-        reply_markup=InlineKeyboardMarkup([
-            [
-                InlineKeyboardButton(
-                    "🔙 返回主菜单",
-                    callback_data="back_menu"
-                )
-            ]
-        ])
-    )
-
-
-# =========================
-# 📝 注册
-# =========================
-
-async def register(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    query = update.callback_query
-    await query.answer()
-
-    await query.edit_message_text(
-        "📝 注册\n\n"
-        "按钮测试成功！",
-        reply_markup=InlineKeyboardMarkup([
-            [
-                InlineKeyboardButton(
-                    "🔙 返回主菜单",
-                    callback_data="back_menu"
-                )
-            ]
-        ])
-    )
-
-
-# =========================
-# 🎁 活动
-# =========================
-
-async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def promotion(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
 
     query = update.callback_query
     await query.answer()
@@ -120,8 +72,8 @@ async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
     kb = [
         [
             InlineKeyboardButton(
-                "🎁 500％首充奖励/500％ welcome bonus",
-                callback_data="500％bonus"
+                "🎁 500% 首存奖金",
+                callback_data="bonus500"
             )
         ],
         [
@@ -133,21 +85,21 @@ async def promotion(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ]
 
     await query.edit_message_text(
-        "🎁 活动详情\n\n"
-        "✨ 欢迎参加本次活动！\n\n"
+        "🎁 S22 ENTERTAINMENT CITY 优惠活动\n\n"
+        "🔥 500% 首存奖金\n\n"
         "💰 最低存款：RM100\n"
-        "🎁 流水要求：x18\n"
-        "📌 活动说明：适用于全部老虎机游戏除了918KISS MEGA888 PUSSY"
-        "祝您使用愉快 🍀",
+        "🎯 流水要求：x22\n"
+        "🎰 适用于老虎机游戏\n\n"
+        "点击下方查看活动详情 👇",
         reply_markup=InlineKeyboardMarkup(kb)
     )
 
 
 # =========================
-# 🎁 活动详情
+# 500% 活动详情
 # =========================
 
-async def promotion_detail(
+async def bonus500(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
@@ -158,34 +110,40 @@ async def promotion_detail(
     kb = [
         [
             InlineKeyboardButton(
-                "🔙 返回活动",
-                callback_data="promotion"
+                "🎮 立即开始游戏",
+                url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "🏠 返回主菜单",
-                callback_data="back_menu"
+                "🔙 返回优惠活动",
+                callback_data="promotion"
             )
         ]
     ]
 
     await query.edit_message_text(
-        "🎁 活动详情\n\n"
-        "✨ 欢迎参加本次活动！\n\n"
+        "🎁 500% 首存奖金\n\n"
+        "✨ 开启您的幸运之旅！\n\n"
         "💰 最低存款：RM100\n"
-        "🎁 流水要求：x18\n"
-        "📌 活动说明：适用于全部老虎机游戏除了918KISS MEGA888 PUSSY"
-        "祝您使用愉快 🍀",
+        "🎁 首存奖金：最高 500%\n"
+        "🎯 流水要求：x22\n"
+        "🎰 适用于老虎机游戏\n\n"
+        "📌 参与方式：\n"
+        "1️⃣ 注册全新的 S22 ENTERTAINMENT CITY 账号\n"
+        "2️⃣ 登录您的账户\n"
+        "3️⃣ 完成首次存款，最低 RM100\n"
+        "4️⃣ 存款成功后，奖金按照活动规则发放\n\n"
+        "祝您游戏愉快 🍀",
         reply_markup=InlineKeyboardMarkup(kb)
     )
 
 
 # =========================
-# 📞 客服
+# 返回主菜单
 # =========================
 
-async def customer_service(
+async def back_menu(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
@@ -193,37 +151,54 @@ async def customer_service(
     query = update.callback_query
     await query.answer()
 
+    kb = [
+        [
+            InlineKeyboardButton(
+                "🎮 开始游戏",
+                url="https://h5.ddwin01.com/#/Home"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "📝 注册账号",
+                url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "🎁 优惠活动",
+                callback_data="promotion"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+                "📞 联系客服",
+                url="https://wa.me/601175766643"
+            )
+        ]
+    ]
+
     await query.edit_message_text(
-        "📞 客服\n\n"
-        "这是客服按钮测试页面。",
-        url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
-                InlineKeyboardButton(
-                    "🔙 返回主菜单",
-                    callback_data="back_menu"
-                )
-            ]
-        ])
-    )
-
-
-# =========================
-# 🔙 返回主菜单
-# =========================
-
-async def back_menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-
-    query = update.callback_query
-    await query.answer()
-
-    await query.edit_message_text(
-        "🤖 欢迎来到测试机器人\n\n"
+        "🎰 欢迎来到 S22 ENTERTAINMENT CITY\n\n"
         "请选择您需要的服务：",
-        reply_markup=get_main_menu()
+        reply_markup=InlineKeyboardMarkup(kb)
+    )
+    # =========================
+# 用户输入文字
+# =========================
+
+async def text_message(
+    update: Update,
+    context: ContextTypes.DEFAULT_TYPE
+):
+
+    await update.message.reply_text(
+        "⚠️ 请使用机器人提供的按钮进行操作。"
     )
 
 
 # =========================
-# 创建 Bot
+# Bot Application
 # =========================
 
 app = (
@@ -234,13 +209,15 @@ app = (
 )
 
 
-# =========================
-# Handler
-# =========================
-
+# /start
 app.add_handler(
     CommandHandler("start", start)
 )
+
+
+# =========================
+# 按钮处理
+# =========================
 
 app.add_handler(
     CallbackQueryHandler(
@@ -285,20 +262,39 @@ app.add_handler(
 )
 
 
+# 用户发送普通文字
+app.add_handler(
+    MessageHandler(
+        filters.TEXT & ~filters.COMMAND,
+        text_message
+    )
+)
+
+
 # =========================
-# 启动
+# Main
 # =========================
 
 async def main():
 
-    print("Bot starting...")
+    # 启动 Render Web Server
+    threading.Thread(
+        target=run_web,
+        daemon=True
+    ).start()
 
+    # 初始化 Bot
     await app.initialize()
+
+    # 启动 Bot
     await app.start()
+
+    # 启动 Polling
     await app.updater.start_polling()
 
-    print("Bot is running!")
+    print("Telegram Bot is running...")
 
+    # 保持运行
     await asyncio.Event().wait()
 
 
