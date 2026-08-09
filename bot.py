@@ -48,19 +48,23 @@ async def start(
     kb = [
         [
             InlineKeyboardButton(
-                "🎮 开始游戏",
+                "🎮 开始游戏/START GAME",
                 url="https://h5.ddwin01.com/#/Home"
             )
         ],
         [
             InlineKeyboardButton(
-                "📝 注册账号",
+                "📝 注册账号/REGISTER",
                 url="https://go.crisp.chat/chat/embed/?website_id=029a087e-7f0f-4034-a119-fdef568c3105"
             )
         ],
         [
+          InlineKeyboardButton(
+                "🎁 优惠活动/PROMOTION",
+                callback_data="promotion"
+          )
             InlineKeyboardButton(
-                "📞 联系客服",
+                "📞 联系客服/CUSTOMER SERVICE",
                 url="https://wa.me/601175766643"
             )
         ]
