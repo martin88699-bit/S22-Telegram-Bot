@@ -137,7 +137,7 @@ async def promotion(
         "5️⃣ 第五次充值100％ x20流水\n\n"
         
         "🧧总数500％奖金"
-        "📞 如需帮助，请联系客服。"
+        "📞 如需帮助，请联系客服。\n\n"
         
         "🎁 PROMOSI S22 ENTERTAINMENT CITY\n\n"
 
@@ -222,7 +222,7 @@ async def welcome_500(
 
     "🧧 总奖金高达 500%\n\n"
 
-    "📞 如需帮助，请联系我们的客服。"
+    "📞 如需帮助，请联系我们的客服。\n\n"
 
         "🔥 S22 ENTERTAINMENT CITY\n"
         "500% WELCOME BONUS\n\n"
@@ -376,8 +376,14 @@ async def main_menu(
         ],
         [
             InlineKeyboardButton(
-                "🎁 优惠活动/PROMOTION",
+                "🎁 优惠活动/PROMOTION1️⃣",
                 callback_data="promotion"
+            )
+        ],
+        [
+            InlineKeyboardButton(
+        "🔥 优惠活动 500% WELCOME BONUS2️⃣",
+        callback_data="welcome_500"
             )
         ],
         [
@@ -428,8 +434,8 @@ app.add_handler(
 )
 
 
-# 🎁 优惠活动按钮
-    app.add_handler(
+# 🔥 500% Welcome Bonus 按钮
+app.add_handler(
     CallbackQueryHandler(
         welcome_500,
         pattern="^welcome_500$"
