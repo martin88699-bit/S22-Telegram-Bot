@@ -64,7 +64,7 @@ async def start(
         [
             InlineKeyboardButton(
                 "📝 注册账号/REGISTER",
-                url="https://wa.me/601175766643"
+                url="https://wa.me/601121179589"
             )
         ],
         [
@@ -168,7 +168,7 @@ async def promotion(
         [
             InlineKeyboardButton(
                 "📝 注册账号/REGISTER",
-                url="https://wa.me/601175766643"
+                url="https://wa.me/601121179589"
             )
         ],
         [
@@ -252,7 +252,7 @@ async def welcome_500(
         [
             InlineKeyboardButton(
                 "📝 注册账号 / REGISTER",
-                url="https://wa.me/601175766643"
+                url="https://wa.me/601121179589"
             )
         ],
         [
@@ -326,7 +326,7 @@ async def topup_bonus(
         [
             InlineKeyboardButton(
                 "📝 注册账号/REGISTER",
-                url="https://wa.me/601175766643"
+                url="https://wa.me/601121179589"
             )
         ],
         [
